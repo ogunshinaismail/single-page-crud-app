@@ -34,14 +34,14 @@ const SinglePost = ({data, handleViewPost}: propType) => {
         <div className="flex flex-col gap-2">
             <h1 className="text-sm font-semibold">{data?.title}</h1>
             <div className="flex items-center gap-2">
-                {isHovered ? <img src={CalenderWhite} alt="" className='w-3' /> : <img src={Calender} alt="" className='w-3' />}
+                {isHovered ? <img src={CalenderWhite} alt="calender-icon" className='w-3' /> : <img src={Calender} alt="" className='w-3' />}
                 <p className={isHovered ? "text-white text-xs font-normal" : "text-[#797979] text-xs font-normal"}>
                   {data && format(date, 'MMMM dd, yyyy HH:mm:ss')}
                 </p>
             </div>
         </div>
 
-        {isHovered ? <img src={DotsWhite} alt="" /> : <img src={Dots} alt="" />}
+        {isHovered ? <img src={DotsWhite} alt="more-options" /> : <img src={Dots} alt="" />}
         {/* <img src={Dots} alt="" /> */}
     </div>
   )

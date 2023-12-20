@@ -70,8 +70,15 @@ const Home = () => {
             setAddPostModal={setAddPostModal} 
             addPostModal={addPostModal}
           /> 
-          : null}
-        {viewPost ? <PostDetails setViewPost={setViewPost} viewPost={viewPost} singlePost={singlePost ?? defaultData} /> : null}
+        : null}
+
+        {viewPost ? 
+          <PostDetails 
+            setViewPost={setViewPost} 
+            viewPost={viewPost} 
+            singlePost={singlePost ?? defaultData} 
+          /> 
+        : null}
     </div>
   )
 }

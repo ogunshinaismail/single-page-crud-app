@@ -45,7 +45,7 @@ const PostDetails = ({setViewPost, viewPost, singlePost} : propType) => {
 
                 <div className='flex flex-col gap-1'>
                     <h1 className="text-sm font-semibold">Featured Images</h1>
-                    <img src={singlePost?.image} alt="" className='w-full h-[250px] object-cover' />
+                    <img src={singlePost?.image} alt="post-img" className='w-full h-[250px] object-cover' />
                 </div>
 
                 <div className='flex flex-col gap-1'>

@@ -16,6 +16,7 @@ const AddPost = ({setAddPostModal, addPostModal} : propType ) => {
     const [isSuccessfull, setisSuccessfull] = useState(false);
     const [isImageLoading, setIsImageLoading] = useState(false);
     const [isImageError, setIsImageError] = useState(false);
+    const [isSubmitted, setIsSubmitted] = useState(false);
 
     const uploadImage = async (files: any) => {
         const formData = new FormData();
@@ -70,6 +71,7 @@ const AddPost = ({setAddPostModal, addPostModal} : propType ) => {
   });
 
   const onSubmit: SubmitHandler<ValidationSchema> = async (data: z.infer<typeof validationSchema>) => {
+    setIsSubmitted(false)
     const imageUrl = data.isImage ? image : '';
     const body = {
         title: data.title,
@@ -86,6 +88,9 @@ const AddPost = ({setAddPostModal, addPostModal} : propType ) => {
     try {
         const response = await axios.post(apiUrl, body);
         // Handle the response
+        if(response.status === 200 || 201) {
+            setIsSubmitted(true)
+        }
         console.log('Response:', response.data);
         window.location.reload()
       } catch (error: any) {
@@ -141,7 +146,12 @@ const AddPost = ({setAddPostModal, addPostModal} : propType ) => {
                     </div>
 
                     <div className="mt-5">
-                        <button className='bg-[#0045F6] text-white py-3.5 px-6 rounded-lg'>Submit</button>
+                        <button 
+                            className={!isSubmitted ? 'bg-[#0045F6] text-white py-3.5 px-6 rounded-lg' : 'bg-[#0045F6] opacity-40 text-white py-3.5 px-6 rounded-lg'} 
+                            disabled={isSubmitted}
+                        >
+                            Submit
+                        </button>
                     </div>
                 </form>
             </div>
