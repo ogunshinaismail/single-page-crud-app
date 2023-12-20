@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import AddPost from './AddPost'
-import SinglePost from './SinglePost'
-import PostDetails from './PostDetails'
 import useFetch from '../hooks/useFetch'
 import axios from 'axios'
 import { Item } from '../types'
+import SinglePost from '../components/SinglePost'
+import AddPost from '../components/AddPost'
+import PostDetails from '../components/PostDetails'
 
 const Home = () => {
     const [ addPostModal, setAddPostModal ] = useState(false)

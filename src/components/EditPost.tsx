@@ -98,7 +98,7 @@ const EditPost = ({setEditPostModal, editPostModal, id} : propType ) => {
                 <form className="flex flex-col gap-3 w-11/12 mx-auto" onSubmit= {handleSubmit(onSubmit)}>
                     <div className="flex flex-col gap-1">
                         <label className="text-sm font-semibold">Post Title <span className="text-[#FF1919]">*</span></label>
-                        <input type="text" className="bg-[#EFEFEF] h-12 px-2" {...register("title")} />
+                        <input type="text" className="bg-[#EFEFEF] h-12 px-2 outline-none text-sm" {...register("title")} />
                         {errors.title && (
                             <p className="text-xs italic text-red-500 mt-2"> {errors.title?.message} </p>
                         )}
@@ -106,7 +106,12 @@ const EditPost = ({setEditPostModal, editPostModal, id} : propType ) => {
 
                     <div className="flex flex-col gap-1">
                         <label className="text-sm font-semibold">Post Category <span className="text-[#FF1919]">*</span></label>
-                        <input type="text" className="bg-[#EFEFEF] h-12 px-2" {...register("category")} />
+                        <select className="bg-[#EFEFEF] h-12 px-2 block w-full rounded-md outline-none border-0 text-sm" {...register("category")}>
+                            <option value="Fashion">Tech</option>
+                            <option value="Sport">Sport</option>
+                            <option value="Game">Game</option>
+                            <option value="Books">Books</option>
+                        </select>
                         {errors.category && (
                             <p className="text-xs italic text-red-500 mt-2"> {errors.category?.message} </p>
                         )}
@@ -116,18 +121,14 @@ const EditPost = ({setEditPostModal, editPostModal, id} : propType ) => {
                         <label className="text-sm font-semibold">Featured Image <span className="text-[#FF1919]">*</span></label>
                         <div className="w-full h-12 px-2 bg-[#F8F9FA] border border-dashed border-[#DEE2E6] relative">
                             < input type="file" className="w-full h-full opacity-0" onChange={(e) => uploadImage(e.target.files)} />
-                            {/* <input type="file" className="w-full h-full opacity-0" {...register("image")} /> */}
                             <p className="text-[#0045F6] text-sm font-normal absolute top-3.5 right-2">Browse Photo</p>
                             <p className="text-[#0045F6] text-sm font-normal absolute top-3.5 left-2">{isSuccessfull ? "Uploaded successfully" : null}</p>
-                            {/* {errors.image && (
-                                <p className="text-xs italic text-red-500 mt-2"> {errors.image?.message} </p>
-                            )} */}
                         </div>
                     </div>
 
                     <div className="flex flex-col gap-1">
                         <label className="text-sm font-semibold">Post Description <span className="text-[#FF1919]">*</span></label>
-                        <textarea className="w-full bg-[#EFEFEF] px-2 h-40" {...register("description")}></textarea>
+                        <textarea className="w-full bg-[#EFEFEF] p-2 text-sm h-40 outline-none" {...register("description")}></textarea>
                         {errors.description && (
                             <p className="text-xs italic text-red-500 mt-2"> {errors.description?.message} </p>
                         )}
