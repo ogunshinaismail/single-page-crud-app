@@ -11,14 +11,17 @@ const Home = () => {
     const [ viewPost, setViewPost ] = useState(false)
     const [ singlePost, setSinglePost ] = useState<Item>()
     const apiUrl = 'https://esocity.onrender.com/posts';
-    const { data } = useFetch(apiUrl);  
+    const { data } = useFetch(apiUrl); 
+
+    // console.log(calledData)
 
     type postResponse = {
       id: number,
       title: string,
       category: string,
       image: string,
-      description: string
+      description: string,
+      date?: string
     }
 
     const defaultData = {
@@ -26,7 +29,8 @@ const Home = () => {
       title: "No data",
       category: "No data",
       image: "No data",
-      description: "No data"
+      description: "No data",
+      date: "No data"
     }
 
     const handleAddPost = () => {
@@ -54,14 +58,19 @@ const Home = () => {
             <button className='bg-[#0045F6] text-white py-3.5 px-6 rounded-lg' onClick={handleAddPost}>New Post</button>
         </div>
         <div className="bg-white px-4 py-8 my-8">
-            <div className="flex flex-col gap-4">
-                {data && data.map((data: postResponse, index: number) => (
+            <div className="flex flex-col gap-5">
+                {data ? data.map((data: postResponse, index: number) => (
                     <SinglePost data={data} key={index} handleViewPost={handleViewPost} />
-                ))}
+                )): <p>You don't have a post</p>}
             </div>
         </div>
 
-        {addPostModal ? <AddPost setAddPostModal={setAddPostModal} addPostModal={addPostModal} /> : null}
+        {addPostModal ? 
+          <AddPost 
+            setAddPostModal={setAddPostModal} 
+            addPostModal={addPostModal}
+          /> 
+          : null}
         {viewPost ? <PostDetails setViewPost={setViewPost} viewPost={viewPost} singlePost={singlePost ?? defaultData} /> : null}
     </div>
   )

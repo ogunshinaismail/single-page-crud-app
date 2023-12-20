@@ -4,6 +4,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import axios from 'axios';
+import { Item } from '../types';
 
 type propType = {
     addPostModal: boolean;
@@ -64,6 +65,7 @@ const AddPost = ({setAddPostModal, addPostModal} : propType ) => {
         category: '',
         isImage: true,
         description: '',
+        date: new Date(),
       },
   });
 
@@ -74,6 +76,7 @@ const AddPost = ({setAddPostModal, addPostModal} : propType ) => {
         category: data.category,
         image: imageUrl,
         description: data.description,
+        date: new Date()
     }
 
     // console.log(body)
