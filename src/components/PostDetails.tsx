@@ -40,7 +40,7 @@ const PostDetails = ({setViewPost, viewPost, singlePost} : propType) => {
                 <img src={Close} alt="" className='absolute top-4 right-4 cursor-pointer' onClick={handleClose} />
                 <div className='flex flex-col gap-1'>
                     <h1 className="text-sm font-semibold">{singlePost?.title}</h1>
-                    {/* <p className="text-lg fontsemi">Lorem ipsum dolor sit consectetur </p> */}
+                    <p className="text-lg fontsemi">Sub title Lorem ipsum dolor sit amet.....</p>
                 </div>
 
                 <div className='flex flex-col gap-1'>
